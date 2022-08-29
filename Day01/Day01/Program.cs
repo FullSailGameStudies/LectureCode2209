@@ -13,15 +13,21 @@ namespace Day01
             PrintMessage();
 
             string message = GetMessage();
+            PrintMessage(message);
         }
         static int Add(int num1, int num2)
         {
-            return num1 + num2;
+            int result = num1 + num2;
+            return result;
         }
 
         static void PrintMessage()
         {
             Console.WriteLine("Hello Gotham!");
+        }
+        static void PrintMessage(string messageToPrint)
+        {
+            Console.WriteLine(messageToPrint);
         }
 
         static string GetMessage()

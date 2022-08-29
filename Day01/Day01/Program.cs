@@ -20,12 +20,35 @@ namespace Day01
             PrintMessage(message);
 
             //pass by ref
-            int result = 0;
-            Add(n1, n2, ref result);
+            int result;// = 0;
+            Add(n1, n2, out result);
             Console.WriteLine(result);
-            Add(n1, n2, ref sum);
+            Add(n1, n2, out sum);
+
+
+            string aNumber = "Steev";
+            bool isGood = IntTryParse(aNumber, out int numResult);
+            if(isGood)
+                Console.WriteLine($"Number: {numResult}");
+            else
+                Console.WriteLine($"{aNumber} is NOT a number!");
 
             Console.WriteLine(DateTime.Now);
+        }
+
+        static bool IntTryParse(string stringToParse, out int number)
+        {
+            bool isNumber = false;
+            number = 0;
+            try
+            {
+                number = int.Parse(stringToParse);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return isNumber;
         }
 
         private static void Timestamp(ref string msg)
@@ -35,7 +58,7 @@ namespace Day01
             msg = $"{DateTime.Now}: {msg}";
         }
 
-        static void Add(int num1, int num2, ref int sum)
+        static void Add(int num1, int num2, out int sum)
         {
             sum = num1 + num2;
         }

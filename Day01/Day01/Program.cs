@@ -14,12 +14,26 @@ namespace Day01
 
             string message = GetMessage();
             PrintMessage(message);
+
+            //pass by ref
+            int result = 0;
+            Add(n1, n2, ref result);
+            Console.WriteLine(result);
+            Add(n1, n2, ref sum);
+
+            Console.WriteLine(DateTime.Now);
         }
+        static void Add(int num1, int num2, ref int sum)
+        {
+            sum = num1 + num2;
+        }
+
         static int Add(int num1, int num2)
         {
             int result = num1 + num2;
             return result;
         }
+
 
         static void PrintMessage()
         {

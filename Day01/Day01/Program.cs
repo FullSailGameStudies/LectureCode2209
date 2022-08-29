@@ -15,6 +15,10 @@ namespace Day01
             string message = GetMessage();
             PrintMessage(message);
 
+            //pass in the message and have it timestamped
+            Timestamp(ref message);//pass by reference
+            PrintMessage(message);
+
             //pass by ref
             int result = 0;
             Add(n1, n2, ref result);
@@ -23,6 +27,14 @@ namespace Day01
 
             Console.WriteLine(DateTime.Now);
         }
+
+        private static void Timestamp(ref string msg)
+        {
+            //msg = DateTime.Now + ": " + msg;
+            //$ - C# interpolated string
+            msg = $"{DateTime.Now}: {msg}";
+        }
+
         static void Add(int num1, int num2, ref int sum)
         {
             sum = num1 + num2;

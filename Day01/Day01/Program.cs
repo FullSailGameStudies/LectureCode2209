@@ -33,7 +33,26 @@ namespace Day01
             else
                 Console.WriteLine($"{aNumber} is NOT a number!");
 
+            MyFavoriteNumber(out int favorite);
+            Console.WriteLine($"Your favorite number is {favorite}? Weird.");
+
             Console.WriteLine(DateTime.Now);
+
+            int fac = Factor(3);
+            fac = Factor(3, 3);
+        }
+
+        static int Factor(int num, int factor = 2)//factor is optional
+        {
+            return num * factor;
+        }
+
+        static void MyFavoriteNumber(out int myFave)
+        {
+            Console.Write("What is your favorite number? ");
+            string input = Console.ReadLine();
+            bool isNumber = int.TryParse(input, out myFave);
+            //validate! loop if isNumber is false
         }
 
         static bool IntTryParse(string stringToParse, out int number)
@@ -70,11 +89,11 @@ namespace Day01
         }
 
 
-        static void PrintMessage()
-        {
-            Console.WriteLine("Hello Gotham!");
-        }
-        static void PrintMessage(string messageToPrint)
+        //static void PrintMessage()
+        //{
+        //    Console.WriteLine("Hello Gotham!");
+        //}
+        static void PrintMessage(string messageToPrint = "Hello Gotham!")
         {
             Console.WriteLine(messageToPrint);
         }

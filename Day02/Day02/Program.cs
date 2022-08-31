@@ -31,6 +31,8 @@ namespace Day02
             //Console.WriteLine(superCrew[15]);//index-out-of-range
 
             superCrew.Remove("Aquaman");//Count:10 Capacity:20
+            List<string> jl2 = superCrew.ToList();//clone the list
+            List<string> jl3 = new List<string>(jl2);//clones the list
 
             ListChallenge();
         }
@@ -55,6 +57,25 @@ namespace Day02
             int numDropped = DropFailing(grades);
             Console.WriteLine($"Number of students dropped: {numDropped}");
             PrintGrades(grades);
+
+            var curved = CurveGrades(grades);
+            PrintGrades(curved);
+        }
+
+        static List<double> CurveGrades(List<double> grades)
+        {
+            List<double> cloned = grades.ToList();
+
+            for (int i = 0; i < cloned.Count; i++)
+            {
+                //cloned[i] += 5;
+                //if (cloned[i] > 100) cloned[i] = 100;
+
+                //ternary operator
+                cloned[i] = (cloned[i] > 95) ? 100 : cloned[i] + 5;
+            }
+
+            return cloned;
         }
 
         private static int DropFailing(List<double> grades)
@@ -114,6 +135,19 @@ namespace Day02
             foreach (int number in numbers)
             {
                 Console.WriteLine(number);
+            }
+
+            //ToList method. needs using System.Linq; 
+            List<int> nums = numbers.ToList();
+
+            //pass the array to the constructor call
+            List<int> nums2 = new List<int>(numbers);
+
+            //copy each item into the list
+            List<int> nums3 = new List<int>();
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                nums3.Add(numbers[i]);
             }
 
             //indexer is SUPER fast!

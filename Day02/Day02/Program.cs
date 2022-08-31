@@ -44,6 +44,7 @@ namespace Day02
 
         private static void ListChallenge()
         {
+            Console.ReadKey();
             List<double> grades = new List<double>();
             Random randy = new Random();
             for (int i = 0; i < 10; i++)
@@ -51,6 +52,33 @@ namespace Day02
                 grades.Add(randy.NextDouble() * 100);
             }
             PrintGrades(grades);
+            int numDropped = DropFailing(grades);
+            Console.WriteLine($"Number of students dropped: {numDropped}");
+            PrintGrades(grades);
+        }
+
+        private static int DropFailing(List<double> grades)
+        {
+            int numDropped = 0;
+            //for (int i = 0; i < grades.Count; i++)
+            //{
+            //    if (grades[i] < 59.5)
+            //    {
+            //        numDropped++;
+            //        grades.RemoveAt(i);
+            //        i--;
+            //    }
+            //}
+            //OR...use a reverse for loop
+            for (int i = grades.Count - 1; i >= 0; i--)
+            {
+                if (grades[i] < 59.5)
+                {
+                    numDropped++;
+                    grades.RemoveAt(i);
+                }
+            }
+            return numDropped;
         }
 
         static void PrintGrades(List<double> course)//pass by value (COPY)

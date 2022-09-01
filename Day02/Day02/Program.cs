@@ -35,6 +35,16 @@ namespace Day02
             List<string> jl3 = new List<string>(jl2);//clones the list
 
             ListChallenge();
+
+            string supers = "Batman;Superman;Wonder Woman;;Flash-Joker---Luther-ManBat";
+            char[] delimiters = new char[] { ';', '-' };
+            string[] superData = supers.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
+            Console.WriteLine("---------SUPERS/VILLAINS---------");
+            int index = 1;
+            foreach (var super in superData)
+            {
+                Console.WriteLine($"{index++}. {super}");
+            }
         }
 
         static void Info(List<string> supers)
@@ -116,6 +126,7 @@ namespace Day02
                 else if (grade < 89.5) Console.ForegroundColor = ConsoleColor.Blue;
                 else Console.ForegroundColor = ConsoleColor.Green;
 
+                Console.CursorLeft = 5;
                 Console.WriteLine($"{course[i],9:N2}");
                 Console.ResetColor();
             }

@@ -142,6 +142,7 @@ namespace Day03
             pg2["Charlie"] = rando.NextDouble() * 100;
 
             PrintGrades(pg2);
+            CurveStudent(pg2);
             DropStudent(pg2);
         }
 
@@ -158,6 +159,27 @@ namespace Day03
                     Console.WriteLine($"{name} was dropped from the course.");
                 else
                     Console.WriteLine($"{name} was not found."); 
+            } while (true);
+        }
+
+        static void CurveStudent(Dictionary<string, double> course)
+        {
+            do
+            {
+                Console.Write("Please enter the student to curve: ");
+                string name = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(name)) break;
+
+                bool wasFound = course.TryGetValue(name, out double grade);
+                if (wasFound)
+                    course[name] = (grade > 95) ? 100 : grade + 5;
+
+                PrintGrades(course);
+
+                if (wasFound)
+                    Console.WriteLine($"{name} was curved to {course[name]}.");
+                else
+                    Console.WriteLine($"{name} was not found.");
             } while (true);
         }
 

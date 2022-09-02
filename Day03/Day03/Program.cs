@@ -93,6 +93,7 @@ namespace Day03
     {
         static void Main(string[] args)
         {
+            FavoriteRace();
             Restaurant bigGs = new Restaurant("Big G's Burgers");
             bigGs.Print();
             Console.ReadKey();
@@ -125,6 +126,43 @@ namespace Day03
             Console.ReadKey();
 
             DictionaryChallenge();
+        }
+
+        private static void FavoriteRace()
+        {
+            Console.ReadKey();
+            List<int> faves = new List<int>() { 5, 9, 7, 43, 12, 13, 420, 1, 69 };
+            Dictionary<int, int> faveCounts = new();
+            for (int i = 0; i < faves.Count; i++)
+            {
+                Console.WriteLine($"{faves[i],2}");
+            }
+            Random randy = new Random();
+            int rand = 0;
+            while (true)
+            {
+                rand = randy.Next(50000);
+                int index = faves.IndexOf(rand);
+                if(index >= 0)
+                {
+                    if (faveCounts.TryGetValue(rand, out int count))
+                        faveCounts[rand] = count + 1;
+                    else
+                        faveCounts[rand] = 1;
+
+                    Console.BackgroundColor = (ConsoleColor)(index + 1);
+                    if(3 + faveCounts[rand] >= Console.WindowWidth)
+                    {
+                        break;
+                    }
+                    Console.SetCursorPosition(3 + faveCounts[rand], index);
+                    Console.Write(" ");
+
+                }
+            }
+            Console.SetCursorPosition(0, 10);
+            Console.WriteLine($"{rand} is the winner!");
+            Console.ReadKey();
         }
 
         static void DictionaryChallenge()

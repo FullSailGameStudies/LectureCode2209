@@ -119,6 +119,23 @@ namespace Day03
             pg2["Charlie"] = rando.NextDouble() * 100;
 
             PrintGrades(pg2);
+            DropStudent(pg2);
+        }
+
+        static void DropStudent(Dictionary<string, double> course)
+        {
+            do
+            {
+                Console.Write("Please enter the student to drop: ");
+                string name = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(name)) break;
+                bool wasDropped = course.Remove(name);
+                PrintGrades(course);
+                if (wasDropped)
+                    Console.WriteLine($"{name} was dropped from the course.");
+                else
+                    Console.WriteLine($"{name} was not found."); 
+            } while (true);
         }
 
         static void PrintGrades(Dictionary<string, double> course)

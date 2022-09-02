@@ -79,6 +79,15 @@ namespace Day03
             //}
             Console.ResetColor();
         }
+
+        public void DropMenuItem(string menuItem)
+        {
+            bool wasRemoved = Menu.Remove(menuItem);
+            if(wasRemoved)
+                Console.WriteLine($"{menuItem} was dropped from the menu.");
+            else
+                Console.WriteLine($"{menuItem} was not found.");
+        }
     }
     internal class Program
     {
@@ -86,6 +95,10 @@ namespace Day03
         {
             Restaurant bigGs = new Restaurant("Big G's Burgers");
             bigGs.Print();
+            Console.ReadKey();
+            bigGs.DropMenuItem("Chicken Nuggets");
+            Console.ReadKey();
+            bigGs.DropMenuItem("Chocolate Shake");
             Console.ReadKey();
 
             DictionaryChallenge();

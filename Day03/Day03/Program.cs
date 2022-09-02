@@ -99,6 +99,29 @@ namespace Day03
             bigGs.DropMenuItem("Chicken Nuggets");
             Console.ReadKey();
             bigGs.DropMenuItem("Chocolate Shake");
+
+            //---------------
+            // Checking for keys
+            //
+            string menuItem = "Large Soda";
+            if (bigGs.Menu.ContainsKey(menuItem))
+            {
+                float price = bigGs.Menu[menuItem];//safe to access the value
+            }
+            else
+                Console.WriteLine($"{menuItem} is not on the menu.");
+
+            menuItem = "Curly Fries";
+            if (bigGs.Menu.TryGetValue(menuItem, out float itemPrice))
+            {
+                float newPrice = itemPrice + 3;
+                bigGs.Menu[menuItem] = newPrice;
+                Console.WriteLine($"{menuItem} was {itemPrice:C2}, now is {bigGs.Menu[menuItem]:C2}. Thanks Putin.");
+
+                Console.ReadKey();
+                bigGs.Print();
+
+            }
             Console.ReadKey();
 
             DictionaryChallenge();

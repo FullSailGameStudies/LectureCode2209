@@ -142,19 +142,29 @@ namespace Day03
             while (true)
             {
                 rand = randy.Next(50000);
-                int index = faves.IndexOf(rand);
+
+                //check if the number is in our list of favorites
+                int index = faves.IndexOf(rand);//will return -1 if NOT
                 if(index >= 0)
                 {
+                    //add or update the count for the favorite number
+                    //if trygetvalue returns false, that means the number was not in the dictionary. so add it with a value of 1.
+                    //if returns true, the number was already added so update the count.
                     if (faveCounts.TryGetValue(rand, out int count))
                         faveCounts[rand] = count + 1;
                     else
                         faveCounts[rand] = 1;
 
+                    //set the color of the number's bar.
                     Console.BackgroundColor = (ConsoleColor)(index + 1);
                     if(3 + faveCounts[rand] >= Console.WindowWidth)
                     {
+                        //if outside the bounds of the window, we have a winner! break out of the loop
                         break;
                     }
+                    //move to the next bar position
+                    //use the number's index in the list to set the Y position of the cursor
+                    //use the number's count in the dictionary to set the X position of the bar
                     Console.SetCursorPosition(3 + faveCounts[rand], index);
                     Console.Write(" ");
 

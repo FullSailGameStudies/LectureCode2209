@@ -32,8 +32,31 @@ namespace Day03
 
             //3. [key] = value
             Menu["Impossible Burger"] = 8.99F;
-            Menu["Impossible Burger"] = 9.99F;//will NOT throw. will overwrite the value
+            Menu["Impossible Burger"] = 12.99F;//will NOT throw. will overwrite the value
 
+        }
+
+        public void Print()
+        {
+            //Console.BackgroundColor = ConsoleColor.DarkGreen;
+            Console.Clear();
+
+            string title = $"--------{Name} Menu---------";
+            int x = Console.WindowWidth / 2 - title.Length / 2;
+            int y = Console.WindowHeight / 2 - Menu.Count / 2;
+            Console.SetCursorPosition(x, y);
+            Console.WriteLine(title);
+
+            foreach (KeyValuePair<string, float> item in Menu)
+            {
+                //set the horizontal position of the cursor
+                Console.CursorLeft = x + 4;
+
+                string menuItem = item.Key;
+                float price = item.Value;
+                Console.WriteLine($"{price,9:C2} {menuItem}");
+            }
+            Console.ResetColor();
         }
     }
     internal class Program
@@ -41,6 +64,8 @@ namespace Day03
         static void Main(string[] args)
         {
             Restaurant bigGs = new Restaurant("Big G's Burgers");
+            bigGs.Print();
+            Console.ReadKey();
 
             DictionaryChallenge();
         }

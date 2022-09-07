@@ -54,6 +54,31 @@ namespace Day04
             //change the extension to .json
             fileName = Path.ChangeExtension(fileName, ".json");
             Serialize(JLA, fileName);
+            LoadHeroes(fileName);
+        }
+
+        private static void LoadHeroes(string fileName)
+        {
+            //Deserialize the json data into objects
+            if (File.Exists(fileName))
+            {
+                string heroText = File.ReadAllText(fileName);
+
+                //convert heroText (json data) to a List<Superhero>
+                try
+                {
+                    //deserialize the text
+                    List<Superhero> heroes = JsonConvert.DeserializeObject<List<Superhero>>(heroText);
+                    foreach (var hero in heroes)
+                    {
+                        Console.WriteLine($"Hi. I am {hero.Name} ({hero.Secret}). And I can {hero.Power}!");
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Incorrect format!");
+                }
+            }
         }
 
         private static void Serialize(List<Superhero> jLA, string fileName)

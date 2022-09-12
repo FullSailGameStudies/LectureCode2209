@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Day07CL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,6 +9,11 @@ namespace Day07
     {
         static void Main(string[] args)
         {
+            GameObject gObject;//value is null
+            gObject = new GameObject();//create an instance of GameObject
+
+            gObject.X = 10;//calls the setter
+            int xPos = gObject.X; //calls the getter
         }
     }
 }

@@ -21,6 +21,18 @@ namespace Day07
             player.Render();
             GameObject.Info();
 
+            Inventory backpack = new Inventory(3, new List<string>() { "sword" });
+            try
+            {
+                backpack.AddItem("map");
+                backpack.AddItem("pickaxe");
+                backpack.AddItem("pipe bomb");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
             Console.ReadKey();
         }
     }

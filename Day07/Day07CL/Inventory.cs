@@ -41,5 +41,16 @@ namespace Day07CL
             Items = items.ToList();//clone it so you have your own COPY of the list
         }
         #endregion
+        #region Methods
+        //AddItem - pass it an item to add to the list
+        // if the list is "full" (count == capacity), then throw an exception
+        public void AddItem(string itemToAdd)
+        {
+            if (_items.Count == _capacity)
+                throw new Exception("The inventory is full, fool!");
+
+            _items.Add(itemToAdd);
+        }
+        #endregion
     }
 }

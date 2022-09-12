@@ -73,6 +73,30 @@ namespace Day07CL
 
         //Auto-properties - the compiler makes the backing field.
         public ConsoleColor Color { get; private set; }
+
+        //same as writing a get the returns the field and a set that assigns the value to the field
+        #endregion
+
+        #region Constructors (ctors)
+        //used to initialize the data of your instance
+        //a default constructor (takes no parameters) is provided by the compiler
+        //UNTIL you create one
+        public GameObject()
+        {
+            //initialize (assign) values to your data/properties
+            Color = ConsoleColor.Green;
+            _x = 0;
+            _y = 0;
+        }
+
+        public GameObject(int x, int y, ConsoleColor color)
+        {
+            X = x;
+            Y = y;
+            Color = color;
+        }
+
+
         #endregion
     }
 }

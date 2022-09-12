@@ -14,6 +14,8 @@ namespace Day07
 
             gObject.X = 10;//calls the setter
             int xPos = gObject.X; //calls the getter
+
+            GameObject player = new GameObject(5, 10, ConsoleColor.Yellow);
         }
     }
 }

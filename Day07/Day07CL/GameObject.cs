@@ -87,6 +87,8 @@ namespace Day07CL
             Color = ConsoleColor.Green;
             _x = 0;
             _y = 0;
+
+            _numberOfGameObjects++;
         }
 
         public GameObject(int x, int y, ConsoleColor color)
@@ -94,9 +96,33 @@ namespace Day07CL
             X = x;
             Y = y;
             Color = color;
+            _numberOfGameObjects++;
         }
 
 
+        #endregion
+
+        #region Methods
+        //follow PascalNamingConvention
+
+        //draw itself at its x,y position with its color
+        //instance methods have a hidden parameter called "this"
+        //"this" points to the instance that the method was called on
+        public void Render() 
+        {
+            Console.SetCursorPosition(this._x, this._y);
+            Console.BackgroundColor = Color;
+            Console.Write(" ");
+            Console.ResetColor();
+        }
+
+        //static methods do NOT have the "this" b/c they are called
+        //on the class, not instances
+        public static void Info()
+        {
+            Console.SetCursorPosition(0, 0);
+            Console.WriteLine($"Number of game objects: {_numberOfGameObjects}");
+        }
         #endregion
     }
 }

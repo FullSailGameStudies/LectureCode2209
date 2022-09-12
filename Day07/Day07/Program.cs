@@ -12,10 +12,16 @@ namespace Day07
             GameObject gObject;//value is null
             gObject = new GameObject();//create an instance of GameObject
 
-            gObject.X = 10;//calls the setter
+            gObject.X = 30;//calls the setter
             int xPos = gObject.X; //calls the getter
 
             GameObject player = new GameObject(5, 10, ConsoleColor.Yellow);
+
+            gObject.Render();
+            player.Render();
+            GameObject.Info();
+
+            Console.ReadKey();
         }
     }
 }

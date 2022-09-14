@@ -39,6 +39,22 @@ namespace Day07
             int damage = sting.DoDamage();
             Console.WriteLine($"We swing sting and do {damage} damage to the rat!");
 
+
+            #region Casting
+            int num = 5;
+            long bigNum = num;//IMPLICIT casting
+
+            num = (int)bigNum;//EXPLICIT casting
+
+            //player is a Player type. Player is-a GameObject
+            //gObject is a GameObject type.
+
+            //UPCASTING
+            //  casting from a DERIVED type (Player) to a BASE type (GameObject)
+            //  ALWAYS safe!
+            GameObject gObj2 = player;
+            #endregion
+
             Console.ReadKey();
         }
     }

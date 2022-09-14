@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Day07CL
 {
-    public class Player : GameObject
+    public class Player : GameObject //Player is-a GameObject
     {
         public int Level { get; set; }
         //Player constructor MUST call a GameObject constructor

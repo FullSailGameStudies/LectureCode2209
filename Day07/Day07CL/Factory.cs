@@ -14,5 +14,15 @@ namespace Day07CL
             GameObject gameObject = new(x, y, color);
             return gameObject;
         }
+        public static Player BuildPlayer(int level, int x, int y, ConsoleColor color)
+        {
+            Player player = new(level, x, y, color);
+            return player;
+        }
+
+        public static FantasyWeapon MakeWeapon(WeaponRarity rarity, int level, int cost, int maxDamage)
+        {
+            return new FantasyWeapon(rarity, level, cost, maxDamage);
+        }
     }
 }

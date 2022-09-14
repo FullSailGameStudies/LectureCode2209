@@ -81,18 +81,19 @@ namespace Day07CL
         //used to initialize the data of your instance
         //a default constructor (takes no parameters) is provided by the compiler
         //UNTIL you create one
-        public GameObject()
-        {
-            //initialize (assign) values to your data/properties
-            Color = ConsoleColor.Green;
-            _x = 0;
-            _y = 0;
+        //public GameObject()
+        //{
+        //    //initialize (assign) values to your data/properties
+        //    Color = ConsoleColor.Green;
+        //    _x = 0;
+        //    _y = 0;
 
-            _numberOfGameObjects++;
-        }
+        //    _numberOfGameObjects++;
+        //}
 
         public GameObject(int x, int y, ConsoleColor color)
         {
+            Console.WriteLine("GameObject Constructor");
             X = x;
             Y = y;
             Color = color;

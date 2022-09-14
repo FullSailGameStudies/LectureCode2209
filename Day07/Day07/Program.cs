@@ -10,12 +10,14 @@ namespace Day07
         static void Main(string[] args)
         {
             GameObject gObject;//value is null
-            gObject = new GameObject();//create an instance of GameObject
+            gObject = Factory.BuildGameObject(0,0,ConsoleColor.Green);//create an instance of GameObject
 
             gObject.X = 30;//calls the setter
             int xPos = gObject.X; //calls the getter
 
-            GameObject player = Factory.BuildGameObject(5, 10, ConsoleColor.Yellow);
+            Player player = Factory.BuildPlayer(2, 5, 10, ConsoleColor.Yellow);
+
+            //Console.ReadKey();
 
             gObject.Render();
             player.Render();

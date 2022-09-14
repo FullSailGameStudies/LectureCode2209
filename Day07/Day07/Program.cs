@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 
 namespace Day07
 {
@@ -23,22 +24,25 @@ namespace Day07
             player.Render();
             GameObject.Info();
 
-            Inventory backpack = new Inventory(3, new List<string>() { "sword" });
-            try
-            {
-                backpack.AddItem("map");
-                backpack.AddItem("pickaxe");
-                backpack.AddItem("pipe bomb");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            Inventory backpack = new Inventory(3, new List<FantasyWeapon>());
+            //try
+            //{
+            //    backpack.AddItem("map");
+            //    backpack.AddItem("pickaxe");
+            //    backpack.AddItem("pipe bomb");
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
 
             FantasyWeapon sting = new FantasyWeapon(WeaponRarity.Legendary, 100, 100000, 1000);
             int damage = sting.DoDamage();
             Console.WriteLine($"We swing sting and do {damage} damage to the rat!");
 
+            backpack.AddItem(sting);
+            //UPCASTS BowWeapon instance to a FantasyWeapon
+            backpack.AddItem(new BowWeapon(5, 10, WeaponRarity.Common, 1, 10, 20));
 
             #region Casting
             int num = 5;
@@ -53,6 +57,31 @@ namespace Day07
             //  casting from a DERIVED type (Player) to a BASE type (GameObject)
             //  ALWAYS safe!
             GameObject gObj2 = player;
+
+            //DOWNCASTING
+            //  casting from a BASE type (GameObject) to a Derived type (Player)
+            //  NOT safe!!!!
+            gObj2 = new GameObject(10, 10, ConsoleColor.Magenta);
+            //1) try-catch with an explicit cast
+            try
+            {
+                Player playerTwo = (Player)gObj2;//throw an exception at runtime
+            }
+            catch (Exception)
+            {
+            }
+
+            //2) use the 'as' keyword to cast
+            //will assign null to p2 IF gObj2 is NOT a player object
+            Player p2 = gObj2 as Player;//will NOT throw an exception
+            if(p2 != null)
+                p2.Render();//null-reference exception
+
+            //3) use pattern matching with the 'is' keyword
+            if (gObj2 is Player p3)
+                p3.Render();
+
+            backpack.PrintInventory();
             #endregion
 
             Console.ReadKey();

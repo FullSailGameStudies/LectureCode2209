@@ -26,7 +26,7 @@ namespace Day07CL
         //generally, they are private
         //they follow _camelCasingNamingConvention
 
-        private int _x = 0, _y = 0;
+        protected int _x = 0, _y = 0;
         private static int _numberOfGameObjects;
 
         #endregion

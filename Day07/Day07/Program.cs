@@ -11,7 +11,7 @@ namespace Day07
         static void Main(string[] args)
         {
             GameObject gObject;//value is null
-            gObject = Factory.BuildGameObject(0,0,ConsoleColor.Green);//create an instance of GameObject
+            gObject = Factory.BuildGameObject(0, 0, ConsoleColor.Green);//create an instance of GameObject
 
             gObject.X = 30;//calls the setter
             int xPos = gObject.X; //calls the getter
@@ -74,7 +74,7 @@ namespace Day07
             //2) use the 'as' keyword to cast
             //will assign null to p2 IF gObj2 is NOT a player object
             Player p2 = gObj2 as Player;//will NOT throw an exception
-            if(p2 != null)
+            if (p2 != null)
                 p2.Render();//null-reference exception
 
             //3) use pattern matching with the 'is' keyword
@@ -85,6 +85,58 @@ namespace Day07
             #endregion
 
             Console.ReadKey();
+            List<GameObject> gameObjs = new List<GameObject>();
+            Random randy = new Random();
+            for (int i = 0; i < 20; i++)
+            {
+                int x = randy.Next(Console.WindowWidth);
+                int y = randy.Next(Console.WindowHeight);
+                ConsoleColor color = (ConsoleColor)randy.Next(16);
+                gameObjs.Add(Factory.BuildGameObject(x, y, color));
+            }
+            gameObjs.Add(player);
+            Console.Clear();
+            Console.CursorVisible = false;
+            while (true)
+            {
+
+                //render the game objects
+                //gObject.Render();
+                //player.Render();
+                foreach (GameObject obj in gameObjs)
+                    obj.Render();
+
+                //update the game objects
+                if (!player.Update())
+                    break;
+
+                if (Collision(player, gameObjs))
+                {
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    Console.Clear();
+                    Console.WriteLine("BOOM!!!");
+                    Console.ResetColor();
+                    break;
+                }
+            }
+            Console.CursorVisible = true;
+
+            Console.ReadKey();
+        }
+
+        private static bool Collision(Player player, List<GameObject> gameObjs)
+        {
+            bool collision = false;
+            foreach (var gameObject in gameObjs)
+            {
+                if (player != gameObject && player.X == gameObject.X && player.Y == gameObject.Y)
+                {
+                    collision = true;
+                    break;
+                }
+
+            }
+            return collision;
         }
     }
 }

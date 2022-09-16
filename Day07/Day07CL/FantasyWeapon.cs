@@ -34,5 +34,10 @@ namespace Day07CL
             Random rando = new Random();
             return (int)(rando.NextDouble() * MaxDamage);
         }
+
+        public virtual void Display()
+        {
+            Console.WriteLine($"I have a level {Level} {Rarity} weapon that costs {Cost:N0} and can do {MaxDamage:N0} of damage.");
+        }
     }
 }

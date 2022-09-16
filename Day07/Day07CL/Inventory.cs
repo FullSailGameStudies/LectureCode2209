@@ -56,9 +56,10 @@ namespace Day07CL
             //loop over items and print the weapon info
             foreach (var weapon in _items)
             {
-                Console.WriteLine($"I have a level {weapon.Level} {weapon.Rarity} weapon that costs {weapon.Cost:N0} and can do {weapon.MaxDamage:N0} of damage.");
-                if(weapon is BowWeapon bow)
-                    Console.WriteLine($"\tI have {bow.ArrowCount} arrows with a capacity of {bow.ArrowCapacity} arrows");
+                weapon.Display();
+                //Console.WriteLine($"I have a level {weapon.Level} {weapon.Rarity} weapon that costs {weapon.Cost:N0} and can do {weapon.MaxDamage:N0} of damage.");
+                //if(weapon is BowWeapon bow)
+                //    Console.WriteLine($"\tI have {bow.ArrowCount} arrows with a capacity of {bow.ArrowCapacity} arrows");
             }
         }
         #endregion

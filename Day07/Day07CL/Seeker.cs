@@ -23,9 +23,15 @@ namespace Day07CL
 
         public void Render()
         {
+            Draw(ConsoleColor.Black);
             UpdatePosition();
+            Draw((ConsoleColor)random.Next(16));
+        }
+
+        private void Draw(ConsoleColor color)
+        {
             Console.SetCursorPosition(X, Y);
-            Console.BackgroundColor = (ConsoleColor)random.Next(16);
+            Console.BackgroundColor = color;
             Console.Write(" ");
             Console.ResetColor();
         }
@@ -33,7 +39,7 @@ namespace Day07CL
         private void UpdatePosition()
         {
             int way = random.Next(100);
-            if(way <= 50)
+            if (way <= 50)
             {
                 if (_player.X < X)
                     X--;

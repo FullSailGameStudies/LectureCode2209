@@ -109,18 +109,15 @@ namespace Day07
             gameObjs.Add(player);
             Console.Clear();
             Console.CursorVisible = false;
+            Render(gameObjs);
             while (true)
             {
-
-                //render the game objects
-                //gObject.Render();
-                //player.Render();
-                foreach (IGameObject obj in gameObjs)
-                    obj.Render();
-
                 //update the game objects
                 if (!player.Update())
                     break;
+
+
+                Render(gameObjs);
 
                 if (Collision(player, gameObjs))
                 {
@@ -144,6 +141,15 @@ namespace Day07
             names.Print();
 
             Console.ReadKey();
+        }
+
+        private static void Render(List<IGameObject> gameObjs)
+        {
+            //render the game objects
+            //gObject.Render();
+            //player.Render();
+            foreach (IGameObject obj in gameObjs)
+                obj.Render();
         }
 
         static Random randy = new Random();

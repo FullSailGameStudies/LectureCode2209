@@ -40,6 +40,11 @@ namespace Day07CL
             return (int)(rando.NextDouble() * (MaxDamage + enchantment));
         }
 
+        public override string ToString()
+        {
+            return $"I have a level {Level} {Rarity} weapon that costs {Cost:N0} and can do {MaxDamage:N0} of damage.";
+        }
+
         public virtual void Display()
         {
             Console.Write($"I have a level {Level} ");

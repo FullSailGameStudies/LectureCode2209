@@ -49,6 +49,10 @@ namespace Day07
             //UPCASTS BowWeapon instance to a FantasyWeapon
             backpack.AddItem(new BowWeapon(5, 10, WeaponRarity.Common, 1, 10, 20));
 
+            List<BowWeapon> myBows = backpack.Bows();
+
+            backpack.Items.Print();
+
             #region Casting
             int num = 5;
             long bigNum = num;//IMPLICIT casting
@@ -130,6 +134,11 @@ namespace Day07
             {
 
             }
+
+            List<int> nums = new List<int>() { 1, 2, 3, 4, 5 };
+            nums.Print();
+            List<string> names = new List<string>() { "Bruce", "Batman", "The Bat" };
+            names.Print();
 
             Console.ReadKey();
         }

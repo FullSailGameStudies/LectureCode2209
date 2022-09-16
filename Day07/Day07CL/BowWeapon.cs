@@ -24,5 +24,9 @@ namespace Day07CL
             Console.WriteLine($"\tI have {ArrowCount} arrows with a capacity of {ArrowCapacity} arrows");
 
         }
+        public override string ToString()
+        {
+            return base.ToString() + $"\tI have {ArrowCount} arrows with a capacity of {ArrowCapacity} arrows.";
+        }
     }
 }

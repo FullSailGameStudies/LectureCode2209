@@ -94,14 +94,17 @@ namespace Day07
             #endregion
 
             Console.ReadKey();
-            List<GameObject> gameObjs = new List<GameObject>();
-            Random randy = new Random();
+            List<IGameObject> gameObjs = new List<IGameObject>();
             for (int i = 0; i < 20; i++)
             {
                 int x = randy.Next(Console.WindowWidth);
                 int y = randy.Next(Console.WindowHeight);
-                ConsoleColor color = (ConsoleColor)randy.Next(16);
+                ConsoleColor color = GetRandomColor();
                 gameObjs.Add(Factory.BuildGameObject(x, y, color));
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gameObjs.Add(new Seeker(player));
             }
             gameObjs.Add(player);
             Console.Clear();
@@ -112,7 +115,7 @@ namespace Day07
                 //render the game objects
                 //gObject.Render();
                 //player.Render();
-                foreach (GameObject obj in gameObjs)
+                foreach (IGameObject obj in gameObjs)
                     obj.Render();
 
                 //update the game objects
@@ -143,7 +146,17 @@ namespace Day07
             Console.ReadKey();
         }
 
-        private static bool Collision(Player player, List<GameObject> gameObjs)
+        static Random randy = new Random();
+        private static ConsoleColor GetRandomColor()
+        {
+            ConsoleColor color = ConsoleColor.Gray;
+
+            while ((color = (ConsoleColor)randy.Next(16)) == ConsoleColor.Black) ;
+
+            return color;
+        }
+
+        private static bool Collision(Player player, List<IGameObject> gameObjs)
         {
             bool collision = false;
             foreach (var gameObject in gameObjs)

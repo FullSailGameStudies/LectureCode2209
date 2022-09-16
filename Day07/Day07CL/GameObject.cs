@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Day07CL
 {
-    public class GameObject
+    public class GameObject : IGameObject
     {
         #region Access Modifiers
         // Private - ONLY this class can see it

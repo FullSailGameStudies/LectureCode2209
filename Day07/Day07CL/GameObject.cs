@@ -109,7 +109,7 @@ namespace Day07CL
         //draw itself at its x,y position with its color
         //instance methods have a hidden parameter called "this"
         //"this" points to the instance that the method was called on
-        public void Render() 
+        public virtual void Render() 
         {
             Console.SetCursorPosition(this._x, this._y);
             Console.BackgroundColor = Color;

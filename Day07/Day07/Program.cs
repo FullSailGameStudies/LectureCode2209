@@ -10,13 +10,18 @@ namespace Day07
     {
         static void Main(string[] args)
         {
+            //1. Create an instance of the GameObject class
+            GameObject g2 = new GameObject(10, 15, ConsoleColor.DarkCyan);
+            //2. call any non-static method on the variable
+            g2.Render();
+
             GameObject gObject;//value is null
             gObject = Factory.BuildGameObject(0, 0, ConsoleColor.Green);//create an instance of GameObject
 
             gObject.X = 30;//calls the setter
             int xPos = gObject.X; //calls the getter
 
-            Player player = Factory.BuildPlayer(2, 5, 10, ConsoleColor.Yellow);
+            Player player = Factory.BuildPlayer('$',2, 5, 10, ConsoleColor.Yellow);
 
             //Console.ReadKey();
 
@@ -120,6 +125,11 @@ namespace Day07
                 }
             }
             Console.CursorVisible = true;
+
+            foreach (WeaponRarity rarity in Enum.GetValues<WeaponRarity>())
+            {
+
+            }
 
             Console.ReadKey();
         }

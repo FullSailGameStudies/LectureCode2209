@@ -11,12 +11,12 @@ namespace Day07CL
         //EVERYTHING inside the class MUST be static
         public static GameObject BuildGameObject(int x, int y, ConsoleColor color)
         {
-            GameObject gameObject = new(x, y, color);
+            GameObject gameObject = new GameObject(x, y, color);
             return gameObject;
         }
-        public static Player BuildPlayer(int level, int x, int y, ConsoleColor color)
+        public static Player BuildPlayer(char symbol, int level, int x, int y, ConsoleColor color)
         {
-            Player player = new(level, x, y, color);
+            Player player = new(symbol, level, x, y, color);
             return player;
         }
 

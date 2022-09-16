@@ -29,15 +29,24 @@ namespace Day07CL
             MaxDamage = maxDamage;
         }
 
-        public int DoDamage()
+        //public int DoDamage()
+        //{
+        //    Random rando = new Random();
+        //    return (int)(rando.NextDouble() * MaxDamage);
+        //}
+        public int DoDamage(int enchantment = 0)
         {
             Random rando = new Random();
-            return (int)(rando.NextDouble() * MaxDamage);
+            return (int)(rando.NextDouble() * (MaxDamage + enchantment));
         }
 
         public virtual void Display()
         {
-            Console.WriteLine($"I have a level {Level} {Rarity} weapon that costs {Cost:N0} and can do {MaxDamage:N0} of damage.");
+            Console.Write($"I have a level {Level} ");
+            Console.ForegroundColor = Rarity.GetColor();
+            Console.Write($"{Rarity} weapon");
+            Console.ResetColor();
+            Console.WriteLine($" that costs {Cost:N0} and can do {MaxDamage:N0} of damage.");
         }
     }
 }
